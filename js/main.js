@@ -57,8 +57,8 @@ function customHttp() {
 const http = customHttp();
 
 const newsService = (function () {
-    const apiKey = 'f8c98c6b14824f34bcdbad5b8634691c';
-    const apiUrl = 'http://newsapi.org/v2/';
+    const apiKey = '=f8c98c6b14824f34bcdbad5b8634691c';
+    const apiUrl = 'https://newsapi.org/v2';
 
     return {
         topHeadLines(country = 'ru', cb) {
@@ -72,4 +72,18 @@ const newsService = (function () {
 //  init selects
 document.addEventListener('DOMContentLoaded', function() {
     M.AutoInit();
+    loadNews()
 });
+
+
+//load news function
+
+function loadNews () {
+    newsService.topHeadLines('ru', onGetResponse)
+}
+
+//function on get response from server
+
+function onGetResponse (err, res) {
+    console.log(res);
+}
